@@ -1,36 +1,25 @@
 class Client
 
-
-
-
+  def initialize(name,fund)
+    @name = name
+    @fund = fund
+  end
 
 
 # --- getters defined here--
-  def name
-    @name = :name
-  end
 
-  def fund
-    @fund = :fund
-  end
 
 # --- end of getters -------
 
 # --- setters defined here--
 
-  def new=(new)
-    @name = name
-    @fund = fund
-  end
-  
+  # def name=(name)
+  #   @name = name
+  # end
 
-  def name=(name)
-    @name = name
-  end
-
-  def fund=(fund)
-    @fund = fund
-  end
+  # def fund=(fund)
+  #   @fund = fund
+  # end
 
 # --- end of setters -------
 end

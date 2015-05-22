@@ -32,7 +32,7 @@ require_relative 'client'
         print "Fund Value : £"
         c_fund = gets.to_i
         wait = puts
-        client = Client.new name: c_name, fund: c_fund
+        client = Broker.new name: c_name, fund: c_fund
         broker.clients << client
 
      when 2

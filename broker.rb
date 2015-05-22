@@ -6,6 +6,12 @@ class Broker
 
 
 # --- getters defined here--
+
+  def new=(name,fund)
+    @name = name
+    @fund = fund
+  end
+
   def name
     @name
   end
