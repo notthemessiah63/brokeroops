@@ -3,6 +3,9 @@ require 'pry'
 require_relative 'broker'
 require_relative 'client'
 
+# we are only working with one broker -- defined here:-
+broker = Broker.new name: 'Big Broker', address: 'Broker House, 1 Broker Road, Loadsadosh'
+
   def menu
     system "clear"
     puts '*** GASSY ***'
@@ -32,7 +35,7 @@ require_relative 'client'
         print "Fund Value : £"
         c_fund = gets.to_i
         wait = puts
-        client = Broker.new name: c_name, fund: c_fund
+        client = Client.new name: c_name, fund: c_fund
         broker.clients << client
 
      when 2

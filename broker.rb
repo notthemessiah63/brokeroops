@@ -1,16 +1,11 @@
 class Broker
 
-
-
-
-
+  def initialize(name,address)
+    @name = name
+    @address = address
+  end
 
 # --- getters defined here--
-
-  def new=(name,fund)
-    @name = name
-    @fund = fund
-  end
 
   def name
     @name
