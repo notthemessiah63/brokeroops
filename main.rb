@@ -7,7 +7,6 @@ require_relative 'stock'
 
 # we are only working with one broker -- defined here:-
 broker_1 = Broker.new co_name: 'Big Broker', address: 'Broker House, 1 Broker Road, Loadsadosh'
-
  
 # some default stock items here
 
@@ -27,8 +26,17 @@ ptec.p_stocks << stk_tec1
 pind.p_stocks << stk_ind1
 pfin.p_stocks << stk_fin1 << stk_fin2
 
-# binding.pry
+# --- put in a default client 
+aclient1 = Client.new name: 'John Banks', fund: 4456
+aclient2 = Client.new name: 'Sally Jones', fund: 7639
 
+# --- put the portfolios to the client
+aclient1.portfolios << pfin
+aclient2.portfolios << ptec
+
+broker_1.clients << aclient1 << aclient2
+
+binding.pry
 
   def menu
     system "clear"
@@ -40,6 +48,7 @@ pfin.p_stocks << stk_fin1 << stk_fin2
     puts '5 - List all clients and their balances'
     puts '6 - List client portfolio and associated values'
     puts '7 - List all stocks in a portfolio and associated values'
+    puts '8 - create client and portfolio'
     puts '9 - Quit program'
     puts
     print "Enter Option: "
@@ -67,6 +76,8 @@ pfin.p_stocks << stk_fin1 << stk_fin2
         system "clear"
         puts "Create a portfolio:"
         puts "========================"
+        print "Client Name : "
+        c_name = gets
         print "Portfolio Name : "
         p_name = gets
         cp = Portfolio.new p_name: p_name
@@ -74,6 +85,7 @@ pfin.p_stocks << stk_fin1 << stk_fin2
         gets
         print "Stock Ref : "
         p_ref = gets
+        wait = puts
         print "Stock Price : £"
         p_price = gets.to_i
         stock_item = Stock.new s_name: p_ref, price: p_price
@@ -92,6 +104,32 @@ pfin.p_stocks << stk_fin1 << stk_fin2
       # List all clients and their balances
      when 7
       # List client portfolio and associated values
+     when 8
+      # create client and build portfolio
+        system "clear"
+        puts "Enter Client:"
+        puts "=============="
+        print "Name : "
+        c_name = gets
+        print "Fund Value : £"
+        c_fund = gets.to_i
+        system "clear"
+        puts "Create portfolio for #{c_name}:"
+        puts "================================="
+        print "Portfolio Name : "
+        p_name = gets
+        system "clear"
+        puts "Enter Stock to Portfolio #{p_name}:"
+        puts "=========================================="
+        print "Stock Ref : "
+        p_ref = gets
+        print "Stock Price : £"
+        p_price = gets.to_i
+        cp.p_stocks << stock_item
+        # --- put portfolio to client
+        stock_item = Stock.new s_name: p_ref, price: p_price
+        cp = Portfolio.new p_name: p_name
+        the_client = Client.new name: c_name, fund: c_fund
      when 9
   end
  

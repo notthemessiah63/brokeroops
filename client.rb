@@ -1,10 +1,10 @@
 class Client
 
+  attr_accessor :name, :fund, :portfolios
   def initialize(options = {})
     @name = options[:name]
     @fund = options[:fund]
-    # @portfolios[]
-    # @stocks[]
+    @portfolios = []
   end
 
 # --- getters defined here--
@@ -22,8 +22,8 @@ class Client
     @fund = fund
   end
 
-  def portfolios=(portfolios)
-    @portfolios = []
+  def add_portfolio=(portfolio)
+    @portfolios << portfolio
   end
 
 # --- end of setters -------
