@@ -20,12 +20,12 @@ class Broker
 
 # --- setters defined here--
 
-  def name=(name)
-    @name = name
+  def co_name=(co_name)
+    @co_name = co_name
   end
 
   def clients=(clients)
-    @clients = []
+    @clients
   end
 
 # --- end of setters -------
