@@ -2,10 +2,27 @@ require 'pry'
 
 require_relative 'broker'
 require_relative 'client'
+require_relative 'portfolio'
+require_relative 'stock'
 
 # we are only working with one broker -- defined here:-
-broker = Broker.new name: 'Big Broker', address: 'Broker House, 1 Broker Road, Loadsadosh'
+broker_1 = Broker.new name: 'Big Broker', address: 'Broker House, 1 Broker Road, Loadsadosh'
 
+# some default portfolios defined here 
+
+ptec = Portfolio.new p_name: 'Technology', p_stocks: ['AAPL']
+pind = Portfolio.new p_name: 'Industry', p_stocks: ['AAIT']
+pfin = Portfolio.new p_name: 'Finance', p_stocks: ['AAME','ABCB']
+
+# some default stock items here
+
+stk_tec1 = Stock.new s_name: 'AAPL', price: 130
+stk_ind1 = Stock.new s_name: 'AAIT', price: 36
+stk_fin1 = Stock.new s_name: 'AAME', price: 3
+stk_fin2 = Stock.new s_name: 'ABCB', price: 26
+
+
+binding.pry
 
 
   def menu
@@ -38,7 +55,7 @@ broker = Broker.new name: 'Big Broker', address: 'Broker House, 1 Broker Road, L
         c_fund = gets.to_i
         wait = puts
         client = Client.new name: c_name, fund: c_fund
-        broker.clients << client
+        broker_1.clients << client
         binding.pry
         wait = gets "waiting"
      when 2
@@ -58,13 +75,13 @@ broker = Broker.new name: 'Big Broker', address: 'Broker House, 1 Broker Road, L
      when 3
       # Purchase Stocks
      when 4
-      # Purchase Stocks
+      # Sell Stocks
      when 5
       # Purchase Stocks
      when 6
-      # Purchase Stocks
+      # List all clients and their balances
      when 7
-      # Purchase Stocks
+      # List client portfolio and associated values
      when 9
   end
  

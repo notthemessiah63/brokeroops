@@ -1,4 +1,6 @@
 class Portfolio
+
+  attr_accessor :p_name, :p_stocks
   def initialize(options = {})
     @p_name = options[:p_name]
     @p_stocks = []
