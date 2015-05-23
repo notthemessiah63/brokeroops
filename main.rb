@@ -6,6 +6,8 @@ require_relative 'client'
 # we are only working with one broker -- defined here:-
 broker = Broker.new name: 'Big Broker', address: 'Broker House, 1 Broker Road, Loadsadosh'
 
+
+
   def menu
     system "clear"
     puts '*** GASSY ***'
@@ -41,7 +43,18 @@ broker = Broker.new name: 'Big Broker', address: 'Broker House, 1 Broker Road, L
         wait = gets "waiting"
      when 2
       # Create a portfolio
-
+        system "clear"
+        puts "Create Client portfolio:"
+        puts "========================"
+        print "Client Name : "
+        c_name = gets
+        print "Portfolio Name : "
+        p_name = gets
+        print "Stock Ref : "
+        p_ref = gets
+        wait = puts
+        binding.pry
+        wait = gets "waiting"
      when 3
       # Purchase Stocks
      when 4
