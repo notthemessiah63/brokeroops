@@ -1,19 +1,20 @@
 class Broker
 
-  def initialize(name,address)
-    @name = name
-    @address = address
+  attr_accessor :co_name, :clients
+  def initialize(options = {})
+    @co_name = options[:co_name]
+    @clients = []
   end
 
 # --- getters defined here--
 
-  def name
-    @name
-  end
+  # def name
+  #   @name
+  # end
 
-  def clients
-    @clients
-  end
+  # def clients
+  #   @clients
+  # end
 
 # --- end of getters -------
 

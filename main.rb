@@ -37,7 +37,8 @@ broker = Broker.new name: 'Big Broker', address: 'Broker House, 1 Broker Road, L
         wait = puts
         client = Client.new name: c_name, fund: c_fund
         broker.clients << client
-
+        binding.pry
+        wait = gets "waiting"
      when 2
       # Create a portfolio
 

@@ -1,8 +1,13 @@
 class Client
 
-  def initialize(name,fund)
-    @name = name
-    @fund = fund
+  # def initialize(name,fund)
+  #   @name = name
+  #   @fund = fund
+  # end
+  attr_accessor :name, :fund
+  def initialize(options = {})
+    @name = options[:name]
+    @fund = options[:fund]
   end
 
 
