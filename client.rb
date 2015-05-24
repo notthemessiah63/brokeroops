@@ -1,6 +1,7 @@
 class Client
 
-  attr_accessor :name, :fund, :portfolios
+  # attr_accessor :name, :fund, :portfolios
+  attr_writer :name, :fund, :add_portfolio
   def initialize(options = {})
     @name = options[:name]
     @fund = options[:fund]

@@ -7,7 +7,9 @@ require_relative 'stock'
 
 # we are only working with one broker -- defined here:-
 broker_1 = Broker.new co_name: 'Big Broker', address: 'Broker House, 1 Broker Road, Loadsadosh'
- 
+# --- put in a default client 
+aclient1 = Client.new name: 'John Banks', fund: 4456
+
 # some default stock items here
 
 stk_tec1 = Stock.new s_name: 'AAPL', price: 130
@@ -26,13 +28,15 @@ ptec.p_stocks << stk_tec1
 pind.p_stocks << stk_ind1
 pfin.p_stocks << stk_fin1 << stk_fin2
 
-# --- put in a default client 
-aclient1 = Client.new name: 'John Banks', fund: 4456
-aclient2 = Client.new name: 'Sally Jones', fund: 7639
+# # --- put in a default client 
+# aclient1 = Client.new name: 'John Banks', fund: 4456
+# aclient2 = Client.new name: 'Sally Jones', fund: 7639
+
 
 # --- put the portfolios to the client
-aclient1.portfolios << pfin
-aclient2.portfolios << ptec
+aclient1 = Client.add_portfolio(pfin)
+
+binding.pry
 
 broker_1.clients << aclient1 << aclient2
 
@@ -86,7 +90,7 @@ broker_1.clients << aclient1 << aclient2
           wait = puts
           print "Stock Price : £"
           p_price = gets.to_i
-          stock_item = Stock.new s_name: p_ref, price: p_price
+          the_stock_item = Stock.new s_name: p_ref, price: p_price
           client.add_portfolio(the_portfolio)
           # wait = puts
           binding.pry

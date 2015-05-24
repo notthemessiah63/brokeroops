@@ -1,6 +1,7 @@
 class Broker
 
-  attr_accessor :co_name, :clients
+  # attr_accessor :co_name, :clients
+  attr_writer :co_name, :clients
   def initialize(options = {})
     @co_name = options[:co_name]
     @clients = []
