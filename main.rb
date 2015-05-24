@@ -6,9 +6,9 @@ require_relative 'portfolio'
 require_relative 'stock'
 
 # we are only working with one broker -- defined here:-
-broker_1 = Broker.new co_name: 'Big Broker', address: 'Broker House, 1 Broker Road, Loadsadosh'
+# broker_1 = Broker.new co_name: 'Big Broker', address: 'Broker House, 1 Broker Road, Loadsadosh'
 # --- put in a default client 
-aclient1 = Client.new name: 'John Banks', fund: 4456
+# aclient1 = Client.new name: 'John Banks', fund: 4456
 
 # some default stock items here
 
@@ -24,9 +24,9 @@ pind = Portfolio.new p_name: 'Industry'
 pfin = Portfolio.new p_name: 'Finance'
 
 # -- putting some stocks into portfolios
-ptec.p_stocks << stk_tec1
-pind.p_stocks << stk_ind1
-pfin.p_stocks << stk_fin1 << stk_fin2
+# ptec.p_stocks << stk_tec1
+# pind.p_stocks << stk_ind1
+# pfin.p_stocks << stk_fin1 << stk_fin2
 
 # # --- put in a default client 
 # aclient1 = Client.new name: 'John Banks', fund: 4456
@@ -34,11 +34,9 @@ pfin.p_stocks << stk_fin1 << stk_fin2
 
 
 # --- put the portfolios to the client
-aclient1 = Client.add_portfolio(pfin)
+# aclient1 = Client.new portfolio: pind
 
-binding.pry
-
-broker_1.clients << aclient1 << aclient2
+# broker_1.clients << aclient1 << aclient2
 
 # binding.pry
 
@@ -63,22 +61,21 @@ broker_1.clients << aclient1 << aclient2
        when 1
         # Client creation
           system "clear"
-          puts "Create Client for #{broker_1}:"
+          puts "Create Client:"
           puts "=============="
           print "Name : "
           c_name = gets
           print "Fund Value : £"
           c_fund = gets.to_i
           wait = puts
-          the_client = Client.new name: c_name, fund: c_fund
+          # the_client = Client.new name: c_name, fund: c_fund
        when 2
         # Create a portfolio
           system "clear"
           puts "Create a portfolio for #{c_name}:"
           puts "========================"
           print "Portfolio Name : "
-          p_name = gets
-          the_portfolio = Portfolio.new p_name: p_name
+          p_name = gets 
        when 3
         # Purchase Stocks
           system "clear"
@@ -91,7 +88,9 @@ broker_1.clients << aclient1 << aclient2
           print "Stock Price : £"
           p_price = gets.to_i
           the_stock_item = Stock.new s_name: p_ref, price: p_price
-          client.add_portfolio(the_portfolio)
+          the_portfolio = Portfolio.new p_name: p_name, p_stocks: [p_ref,p_price]
+          the_client = Client.new name: c_name, fund: c_fund, portfolios: the_portfolio
+          broker_1 = Broker.new co_name: 'Big Broker', clients: the_client
           # wait = puts
           binding.pry
           wait = gets "waiting"
