@@ -36,9 +36,10 @@ aclient2.portfolios << ptec
 
 broker_1.clients << aclient1 << aclient2
 
-binding.pry
+# binding.pry
 
-  def menu
+  done = false
+  until done
     system "clear"
     puts '*** GASSY ***'
     puts '1 - Create a client'
@@ -52,84 +53,56 @@ binding.pry
     puts '9 - Quit program'
     puts
     print "Enter Option: "
-    gets.chomp.to_i
-  end
+    option_sel = gets.chomp.to_i
 
-  option_sel = menu
-
-  case option_sel
-     when 1
-      # Client creation
-        system "clear"
-        puts "Create Client:"
-        puts "=============="
-        print "Name : "
-        c_name = gets
-        print "Fund Value : £"
-        c_fund = gets.to_i
-        wait = puts
-        c = Client.new name: c_name, fund: c_fund
-        # broker_1.clients << client
-        wait = gets "waiting"
-     when 2
-      # Create a portfolio
-        system "clear"
-        puts "Create a portfolio:"
-        puts "========================"
-        print "Client Name : "
-        c_name = gets
-        print "Portfolio Name : "
-        p_name = gets
-        cp = Portfolio.new p_name: p_name
-        puts cp
-        gets
-        print "Stock Ref : "
-        p_ref = gets
-        wait = puts
-        print "Stock Price : £"
-        p_price = gets.to_i
-        stock_item = Stock.new s_name: p_ref, price: p_price
-        cp.p_stocks << stock_item
-        puts cp
-        # wait = puts
-        binding.pry
-        wait = gets "waiting"
-     when 3
-      # Purchase Stocks
-     when 4
-      # Sell Stocks
-     when 5
-      # Purchase Stocks
-     when 6
-      # List all clients and their balances
-     when 7
-      # List client portfolio and associated values
-     when 8
-      # create client and build portfolio
-        system "clear"
-        puts "Enter Client:"
-        puts "=============="
-        print "Name : "
-        c_name = gets
-        print "Fund Value : £"
-        c_fund = gets.to_i
-        system "clear"
-        puts "Create portfolio for #{c_name}:"
-        puts "================================="
-        print "Portfolio Name : "
-        p_name = gets
-        system "clear"
-        puts "Enter Stock to Portfolio #{p_name}:"
-        puts "=========================================="
-        print "Stock Ref : "
-        p_ref = gets
-        print "Stock Price : £"
-        p_price = gets.to_i
-        cp.p_stocks << stock_item
-        # --- put portfolio to client
-        stock_item = Stock.new s_name: p_ref, price: p_price
-        cp = Portfolio.new p_name: p_name
-        the_client = Client.new name: c_name, fund: c_fund
-     when 9
+    case option_sel
+       when 1
+        # Client creation
+          system "clear"
+          puts "Create Client for #{broker_1}:"
+          puts "=============="
+          print "Name : "
+          c_name = gets
+          print "Fund Value : £"
+          c_fund = gets.to_i
+          wait = puts
+          the_client = Client.new name: c_name, fund: c_fund
+       when 2
+        # Create a portfolio
+          system "clear"
+          puts "Create a portfolio for #{c_name}:"
+          puts "========================"
+          print "Portfolio Name : "
+          p_name = gets
+          the_portfolio = Portfolio.new p_name: p_name
+       when 3
+        # Purchase Stocks
+          system "clear"
+          print "Purchase stocks for #{c_name}s #{p_name} portfolio:"
+          puts
+          puts "==================================================="
+          print "Stock Ref : "
+          p_ref = gets
+          wait = puts
+          print "Stock Price : £"
+          p_price = gets.to_i
+          stock_item = Stock.new s_name: p_ref, price: p_price
+          client.add_portfolio(the_portfolio)
+          # wait = puts
+          binding.pry
+          wait = gets "waiting"
+       when 4
+        # Sell Stocks
+       when 5
+        # Purchase Stocks
+       when 6
+        # List all clients and their balances
+       when 7
+        # List client portfolio and associated values
+       when 8
+        # Hmmmm
+       when 9
+        done = true
+    end
   end
  
